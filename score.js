@@ -13,6 +13,7 @@ function addEventListener(button, callback){
 
 addEventListener(spin1, function(){
     setBetAmount("btn1");
+    document.getElementById("buttonClickSound").play();
     randomNumber();
     winnerCheck();
     updateCreditScreen();
@@ -23,6 +24,7 @@ addEventListener(spin1, function(){
 
 addEventListener(spin2, function(){
     setBetAmount("btn2");
+    document.getElementById("buttonClickSound").play();
     randomNumber();
     winnerCheck();
     updateCreditScreen();
@@ -32,6 +34,7 @@ addEventListener(spin2, function(){
 });
 addEventListener(spin3, function(){
     setBetAmount("btn3");
+    document.getElementById("buttonClickSound").play();
     randomNumber();
     winnerCheck();
     updateCreditScreen();

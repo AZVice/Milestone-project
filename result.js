@@ -13,6 +13,9 @@ function setBetAmount(buttonId){
     }
 }
 
+const buttonClickSound = document.getElementById("buttonClickSound");
+buttonClickSound.play();
+
 
 function winnerCheck(){
     if (cardOneDiv.textContent === cardTwoDiv.textContent && cardTwoDiv.textContent === cardThreeDiv.textContent) {
