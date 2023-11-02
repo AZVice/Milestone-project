@@ -63,7 +63,7 @@ button.addEventListener("click", function() {
         setTimeout (function() {
         newWindow.close();
         location.reload();
-         }, 2000);
+         }, 3000);
          
     }
     
