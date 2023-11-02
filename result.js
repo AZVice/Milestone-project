@@ -17,6 +17,7 @@ function setBetAmount(buttonId){
 
 function winnerCheck(){
     if (cardOneDiv.textContent === cardTwoDiv.textContent && cardTwoDiv.textContent === cardThreeDiv.textContent){
+        console.log(cardOneDiv.textContent, cardTwoDiv.textContent,cardThreeDiv.textContent);
         if(cardOneDiv.textContent === "7") {
             resultContainer.textContent = "Jackpot";
             const winnerPageURL = "winnerPage.html";
