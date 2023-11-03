@@ -1,49 +1,34 @@
 
-let currentScore = 1000;
+let currentScore = 100;
 
 
-function addEventListener(button, callback){
+function addSpinClickEvent(button) {
     button.addEventListener('click', function(){
+        document.getElementById("buttonClickSound").play();
         randomNumber();
+        setBetAmount();
         winnerCheck();
-        checkAvailableCredit();
-        callback();
     });
+};
+
+addSpinClickEvent(spin1);
+addSpinClickEvent(spin2);
+addSpinClickEvent(spin3);
+
+
+
+let betAmount = 0;
+
+function setBetAmount(buttonId){
+    if(buttonId === "btn1"){
+        betAmount = 1;
+    } else if (buttonId === "btn2"){
+        betAmount = 5;
+    } else if (buttonId === "btn3"){
+        betAmount = 10;
+    }
 }
 
-
-
-addEventListener(spin1, function(){
-    setBetAmount("btn1");
-    document.getElementById("buttonClickSound").play();
-    randomNumber();
-    winnerCheck();
-    updateCreditScreen();
-    checkAvailableCredit();
-
-
-});
-
-addEventListener(spin2, function(){
-    setBetAmount("btn2");
-    document.getElementById("buttonClickSound").play();
-    randomNumber();
-    winnerCheck();
-    updateCreditScreen();
-    checkAvailableCredit();
-
-
-});
-addEventListener(spin3, function(){
-    setBetAmount("btn3");
-    document.getElementById("buttonClickSound").play();
-    randomNumber();
-    winnerCheck();
-    updateCreditScreen();
-    checkAvailableCredit();
-
-
-});
 
 const buttons = document.querySelectorAll(".button-class");
 
@@ -51,12 +36,15 @@ buttons.forEach(button => {
 button.addEventListener("click", function() {
     if(button.id === "btn1" && currentScore >= 2) {
         currentScore -= 1; 
+        setBetAmount("btn1");
 
     }else if (button.id === "btn2" && currentScore >= 6) {
         currentScore -= 5
+        setBetAmount("btn2");
 
     }else if (button.id === "btn3" && currentScore >= 11) {
         currentScore -= 10;
+        setBetAmount("btn3");
 
     }else{
         const playAgainURL = "playAgain.html";
@@ -80,3 +68,14 @@ function updateCreditScreen() {
 }
 
 updateCreditScreen();
+
+
+
+
+
+
+
+
+
+
+

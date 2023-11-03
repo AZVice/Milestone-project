@@ -1,23 +1,11 @@
 
 const resultContainer = document.getElementById("result-card");
 resultContainer.textContent = ("PLACE YOUR BET ");
-let betAmount = 0;
-
-function setBetAmount(buttonId){
-    if(buttonId === "btn1"){
-        betAmount = 1;
-    } else if (buttonId === "btn2"){
-        betAmount = 5;
-    } else if (buttonId === "btn3"){
-        betAmount = 10;
-    }
-}
-
 
 
 function winnerCheck() {
     if (cardOneDiv.textContent === cardTwoDiv.textContent && cardTwoDiv.textContent === cardThreeDiv.textContent) {
-        if (cardOneDiv.textContent === "7") {
+        if (cardOneDiv.textContent === 7) {
             resultContainer.textContent = "Jackpot";
             const winnerPageURL = "winnerPage.html";
             const winWindow = window.open(winnerPageURL, '_blank');
@@ -36,20 +24,24 @@ function winnerCheck() {
             resultContainer.textContent = "You Won X6";
             disableSpin();
 
-            setTimeout(enableSpin, 4000);
+            setTimeout(function() {
+                enableSpin();
+            }, 4000);
         }
     } else if (cardOneDiv.textContent === cardThreeDiv.textContent) {
         currentScore += betAmount * 4;
         document.getElementById("winnerX4Sound").play();
         resultContainer.textContent = "You Won X4";
         disableSpin();
-        setTimeout(enableSpin, 1000);
+        setTimeout(function() {
+            enableSpin();
+        }, 1000);
     } else {
         resultContainer.textContent = "Try again!";
     }
 
     updateCreditScreen();
-}
+};
 
 
 
