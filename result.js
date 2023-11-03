@@ -15,49 +15,53 @@ function setBetAmount(buttonId){
 
 
 
-function winnerCheck(){
-    if (cardOneDiv.textContent === cardTwoDiv.textContent && cardTwoDiv.textContent === cardThreeDiv.textContent){
-        console.log(cardOneDiv.textContent, cardTwoDiv.textContent,cardThreeDiv.textContent);
-        if(cardOneDiv.textContent === "7") {
+function winnerCheck() {
+    if (cardOneDiv.textContent === cardTwoDiv.textContent && cardTwoDiv.textContent === cardThreeDiv.textContent) {
+        if (cardOneDiv.textContent === "7") {
             resultContainer.textContent = "Jackpot";
             const winnerPageURL = "winnerPage.html";
             const winWindow = window.open(winnerPageURL, '_blank');
             currentScore *= 10;
             document.getElementById("jackpotSound").play();
-            spin1.disabled = true;
-            spin2.disabled = true;
-            spin3.disabled = true;
+            disableSpin();
 
-            setTimeout(function() {
+            setTimeout(function () {
                 winWindow.close();
-                spin1.disabled = false;
-                spin2.disabled = false;
-                spin3.disabled = false;
-        }, 6000);
-    
-            
-        }else {
+                enableSpin();
+            }, 6000);
+
+        } else {
             currentScore += betAmount * 6;
             document.getElementById("winnerX6Sound").play();
-            resultContainer.textContent =("You Won X6");
+            resultContainer.textContent = "You Won X6";
+            disableSpin();
+
+            setTimeout(enableSpin, 4000);
         }
-        
-    }else if (cardOneDiv.textContent === cardTwoDiv.textContent || cardOneDiv.textContent === cardThreeDiv.textContent || cardTwoDiv.textContent == cardThreeDiv.textContent) {
+    } else if (cardOneDiv.textContent === cardThreeDiv.textContent) {
         currentScore += betAmount * 4;
         document.getElementById("winnerX4Sound").play();
         resultContainer.textContent = "You Won X4";
+        disableSpin();
+        setTimeout(enableSpin, 1000);
     } else {
         resultContainer.textContent = "Try again!";
-    }        
-    
+    }
 
     updateCreditScreen();
 }
-/*
-function addCredits(){
-    currentScore *=2;
-    updateCreditScreen();
-}
-*/
 
-//cardOneDiv.textContent === cardTwoDiv.textContent || cardOneDiv.textContent === cardThreeDiv.textContent || cardTwoDiv.textContent === cardThreeDiv.textContent)
+
+
+function disableSpin(){
+    spin1.disabled = true;
+    spin2.disabled = true;
+    spin3.disabled = true;
+}
+
+function enableSpin(){
+    spin1.disabled = false;
+    spin2.disabled = false;
+    spin3.disabled = false;
+
+}

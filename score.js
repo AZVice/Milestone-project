@@ -1,15 +1,17 @@
 
-let currentScore = 100;
+let currentScore = 1000;
 
 
 function addEventListener(button, callback){
     button.addEventListener('click', function(){
         randomNumber();
         winnerCheck();
-        //checkAvailableCredit();
+        checkAvailableCredit();
         callback();
     });
 }
+
+
 
 addEventListener(spin1, function(){
     setBetAmount("btn1");
@@ -17,7 +19,7 @@ addEventListener(spin1, function(){
     randomNumber();
     winnerCheck();
     updateCreditScreen();
-    //checkAvailableCredit();
+    checkAvailableCredit();
 
 
 });
@@ -28,7 +30,7 @@ addEventListener(spin2, function(){
     randomNumber();
     winnerCheck();
     updateCreditScreen();
-    //checkAvailableCredit();
+    checkAvailableCredit();
 
 
 });
@@ -38,7 +40,7 @@ addEventListener(spin3, function(){
     randomNumber();
     winnerCheck();
     updateCreditScreen();
-    //checkAvailableCredit();
+    checkAvailableCredit();
 
 
 });
