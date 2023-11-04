@@ -49,6 +49,7 @@ button.addEventListener("click", function() {
     }else{
         const playAgainURL = "playAgain.html";
         const newWindow =  window.open(playAgainURL, '_blank')
+        document.getElementById("You-lose-sound").play();
 
         setTimeout (function() {
         newWindow.close();
